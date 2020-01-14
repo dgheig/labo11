@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Laboratoire : labo_11
 Fichier     : labo_11_schaufelberger_yannick_gallay_david.cpp
-Auteur(s)   : yannick schaufelberger et David Gallay
+Auteur(s)   : Yannick Schaufelberger et David Gallay
 Date        :
 
 But         :

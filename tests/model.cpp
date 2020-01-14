@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Laboratoire : labo_11
 Fichier     : model.cpp
-Auteur(s)   : yannick schaufelberger et David Gallay
+Auteur(s)   : Yannick Schaufelberger et David Gallay
 Date        : 25.11.2019
 
 But         : Example of test file for a function

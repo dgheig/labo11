@@ -1,7 +1,7 @@
 # labo11 - Matrice
 
 ### Contributors
-* schaufelberger yannick
+* Schaufelberger Yannick
 * Gallay David
 
 ### Language
