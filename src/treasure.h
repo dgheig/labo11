@@ -1,6 +1,7 @@
 #ifndef TREASURE_H
 #define TREASURE_H
 
+#include <cstdlib>
 #include <vector>
 
 enum MapState {
@@ -8,14 +9,16 @@ enum MapState {
     MS_WATER,
     MS_TREASURE,
     MS_START
-}
+};
 
 
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
 
+int getRandomInRange(int max, int min = 0);
 
-int getRandomInRange(int max, int min=0);
+int getHeight();
+int getWidth();
 
 Map getEmptyMap(size_t height, size_t width);
 
@@ -28,6 +31,6 @@ void addRandomLake(Map& map);
 bool addStart(size_t& x, size_t&y)
 void addRandomStart(Map& map);
 
-Map initWorld(size_t& x, size_t&y);
+Map initWorld(size_t& x, size_t& y);
 
 #endif // TREASURE_H
