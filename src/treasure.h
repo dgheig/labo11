@@ -18,6 +18,13 @@ enum Directions {
    WEST
 };
 
+enum ResearcherStatus {
+   RICH,
+   LOST,
+   DROWNED,
+   EXHAUSTED
+};
+
 
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
