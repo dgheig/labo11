@@ -61,12 +61,13 @@ int getRandomInRange(int max, int min) {
    }
 }
 
-int getHeight() {
-   return 100;
+int getHeight(Map& map) {
+   return map.size();
 }
 
-int getWidth() {
-   return 200;
+int getWidth(Map& map) {
+   if(getHeight(map) == 0) return 0;
+   return map[0].size();
 }
 
 Map getEmptyMap(size_t height, size_t width) {
@@ -107,18 +108,18 @@ bool addStart(Map& map, size_t x, size_t y) {
     return true;
 }
 
-Map initWorld(size_t& x, size_t&y) {
+Map initWorld(size_t& x, size_t& y) {
    const int numberOfLake = 3;
 
-   Map world = getEmptyMap(getHeight(), getWidth());
+   Map map = getEmptyMap(y, x);
 
    for (int i = 0; i < numberOfLake; ++i) {
-      addRandomLake(world);
+      addRandomLake(map);
    }
-   addRandomTreasure(world);
-   addRandomStart(world);
+   addRandomTreasure(map);
+   addRandomStart(map);
 
-   return world;
+   return map;
 }
 
 
@@ -147,4 +148,12 @@ void displayWorld(const Map& map) {
         }
         cout << endl;
     }
+}
+
+void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus) {
+   int steps = 0;
+
+   do {
+
+   } while (steps < (getHeight(map) * getWidth(map)));
 }
