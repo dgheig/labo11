@@ -106,12 +106,13 @@ void addRandomTreasure(Map& map) {
 // NB: if lake are added first, we could get their origins and radius
 // if | origin1 - origin2 | > radius1 + radius2, then, they don't touch each other
 bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
-    // if(!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
+    if(!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
     _addLake(map, originX, originY, radius);
     return true;
 }
 
 void addRandomLake(Map& map) {
+
     int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 3;
     size_t radius;
     size_t height;
@@ -120,6 +121,10 @@ void addRandomLake(Map& map) {
         radius = getRandomInRange(maxRadius);
         height = getRandomInRange(getHeight(map));
         width = getRandomInRange(getWidth(map));
+        cout << "addRandomLake called" << endl;
+        cout << "radius: " << radius << endl;
+        cout << "height: " << radius << endl;
+        cout << "width: " << radius << endl;
     } while (addLake(map, height, width, radius));
 }
 
