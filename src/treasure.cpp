@@ -109,16 +109,24 @@ bool addStart(size_t& x, size_t&y) {
     return true;
 }
 
-Map initWorld(size_t& x, size_t&y) {
+Map initWorld(size_t& x, size_t& y) {
    const int numberOfLake = 3;
 
-   Map world = getEmptyMap(100, 200);
+   Map map = getEmptyMap(y, x);
 
    for (int i = 0; i < numberOfLake; ++i) {
-      addRandomLake(world);
+      addRandomLake(map);
    }
-   addRandomTreasure(world);
-   addRandomStart(world);
+   addRandomTreasure(map);
+   addRandomStart(map);
 
-   return world;
+   return map;
+}
+
+void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus) {
+   int steps = 0;
+   
+   do {
+      
+   } while (steps < (getHeight(map) * getWidth(map)));
 }
