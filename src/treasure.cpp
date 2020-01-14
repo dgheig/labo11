@@ -18,12 +18,13 @@ int getRandomInRange(int max, int min) {
    }
 }
 
-int getHeight() {
-   return 100;
+int getHeight(Map& map) {
+   return map.size();
 }
 
-int getWidth() {
-   return 200;
+int getWidth(Map& map) {
+   if(getHeight(map) == 0) return 0;
+   return map[0].size();
 }
 
 Map getEmptyMap(size_t height, size_t width) {
@@ -53,7 +54,7 @@ bool addStart(size_t& x, size_t&y) {
 Map initWorld(size_t& x, size_t&y) {
    const int numberOfLake = 3;
 
-   Map world = getEmptyMap(getHeight(), getWidth());
+   Map world = getEmptyMap(100, 200);
 
    for (int i = 0; i < numberOfLake; ++i) {
       addRandomLake(world);

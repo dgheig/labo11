@@ -10,6 +10,13 @@ enum MapState {
     MS_TREASURE
 };
 
+enum Directions {
+   NORTH,
+   EAST,
+   SOUTH,
+   WEST
+};
+
 
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
@@ -30,5 +37,7 @@ void addRandomLake(Map& map);
 bool addStart(size_t& x, size_t& y);
 
 Map initWorld(size_t& x, size_t& y);
+
+void runSimulation(int);
 
 #endif // TREASURE_H
