@@ -22,6 +22,10 @@ using namespace std;
 
 int main() {
 
+    Map world = initWorld(50, 50);
+    displayWorld(world);
+
+
     WAIT_ENTER;
     return EXIT_SUCCESS;
 }
