@@ -27,7 +27,6 @@ int getRandomInRange(int max, int min = 0);
 int getHeight(Map& map);
 int getWidth(Map& map);
 
-Axe getEmpty
 Map getEmptyMap(size_t height, size_t width);
 
 bool addTreasure(Map& map, size_t height, size_t width);
@@ -39,9 +38,10 @@ void addRandomLake(Map& map);
 bool addStart(Map& map, size_t x, size_t y);
 void addRandomStart(Map& map);
 
-Map initWorld(size_t& x, size_t& y);
+Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 
 void displayWorld(const Map& map);
+void displayWorld2(const Map& map);
 void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
 
 #endif // TREASURE_H
