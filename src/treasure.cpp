@@ -135,16 +135,16 @@ void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vecto
 
       switch (direction) {
          case NORTH:
-            currentX++;
-            break;
-         case EAST:
             currentY++;
             break;
+         case EAST:
+            currentX++;
+            break;
          case SOUTH:
-            currentX--;
+            currentY--;
             break;
          case WEST:
-            currentY--;
+            currentX--;
             break;
       }
 
