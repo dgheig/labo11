@@ -24,25 +24,13 @@ bool _checkIfLakeCanBeAdd(Map& map, size_t originX, size_t originY, size_t radiu
     size_t maxHeight = (originY + radius) > mapHeight ? mapHeight : (originY + radius);
 
 
-    // #ifdef DEBUG
-    // cout << "minHeight: " << minHeight << endl;
-    // cout << "maxHeight: " << maxHeight << endl;
-    // #endif
-
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
         size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
         size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
 
-
-        // #ifdef DEBUG
-        // cout << "lineHalfWidth: " << lineHalfWidth << endl;
-        // cout << "minWidth: " << minWidth << endl;
-        // cout << "maxWidth: " << maxWidth << endl;
-        // #endif
-
         for (size_t width = minWidth; width <= maxWidth; ++width) {
-            cerr << height << '-' << width << endl;
+            // cerr << height << '-' << width << endl;
             if (map[height][width] != MS_EARTH) return false;
         }
     }
@@ -56,33 +44,12 @@ void _addLake(Map& map, size_t originX, size_t originY, size_t radius) {
     size_t minHeight = ((int)originY - (int)radius) > 0 ? ((int)originY - (int)radius) : 0;
     size_t maxHeight = (originY + radius) > mapHeight ? mapHeight : (originY + radius);
 
-
-    #ifdef DEBUG
-    cout << "mapHeight: " << mapHeight << endl;
-    cout << "mapWidth: " << mapWidth << endl;
-    cout << "minHeight: " << minHeight << endl;
-    cout << "maxHeight: " << maxHeight << endl;
-    cout << endl;
-    #endif
-
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
         size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
         size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
 
-        #ifdef DEBUG
-        cout << "lineHalfWidth: " << lineHalfWidth << endl;
-        cout << "minWidth: " << minWidth << endl;
-        cout << "maxWidth: " << maxWidth << endl;
-        cout << endl;
-        #endif
-
         for (size_t width = minWidth; width <= maxWidth; ++width) {
-        #ifdef DEBUG
-        cout << "height: " << height << endl;
-        cout << "width: " << width << endl;
-        cout << endl;
-        #endif
             map[height][width] = MS_WATER;
         }
     }
@@ -137,14 +104,14 @@ void addRandomTreasure(Map& map) {
 // if | origin1 - origin2 | > radius1 + radius2, then, they don't touch each other
 
 bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
-//    if (!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
+   if (!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
    _addLake(map, originX, originY, radius);
    return true;
 }
 
 void addRandomLake(Map& map) {
 
-    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 10;
+    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 3;
     size_t radius;
     size_t height;
     size_t width;
@@ -159,7 +126,7 @@ void addRandomLake(Map& map) {
         cout << "height: " << height << endl;
         cout << "width: " << width << endl;
         #endif
-    } while (addLake(map, height, width, radius));
+    } while (!addLake(map, height, width, radius));
 }
 
 bool addStart(Map& map, size_t x, size_t y) {
@@ -181,11 +148,11 @@ void addRandomStart(Map& map) {
 }
 
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
-   const int numberOfLake = 1;
+   const int NUMBER_OF_LAKE = 3;
 
    Map map = getEmptyMap(heigth, width);
 
-   for (int i = 0; i < numberOfLake; ++i) {
+   for (int i = 0; i < NUMBER_OF_LAKE; ++i) {
       addRandomLake(map);
    }
 //    addRandomTreasure(map);
@@ -201,20 +168,20 @@ void displayWorld(const Map& map) {
             switch (state)
             {
             case MS_TREASURE:
-                cout << (char)27 << "[30;43m " << (char)27 << "[0m";
+                cout << "\e[30;43m \e[0m";
                 break;
 
             case MS_WATER:
-                cout << (char)27 << "[30;44m " << (char)27 << "[0m";
+                cout << "\e[30;44m \e[0m";
                 break;
 
             case MS_START:
-                cout << (char)27 << "[30;41m " << (char)27 << "[0m";
+                cout << "\e[30;41m \e[0m";
                 break;
 
             case MS_EARTH:
             default:
-                cout << (char)27 << "[30;42m " << (char)27 << "[0m";
+                cout << "\e[30;42m \e[0m";
                 break;
             }
         }

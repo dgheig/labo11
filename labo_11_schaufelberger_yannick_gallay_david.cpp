@@ -24,16 +24,8 @@ using namespace std;
 int main() {
     size_t startX, startY;
     Map world = initWorld(100, 100, startX, startY);
-    // displayWorld(world);
+    displayWorld(world);
     cout << endl;
-    // displayWorld2(world);
-
-    // Map map = getEmptyMap(50, 50);
-    // displayWorld(map);
-    // cout << endl;
-    // addLake(map, 25, 25, 5);
-    // displayWorld(map);
-    // cout << endl;
 
     WAIT_ENTER;
     return EXIT_SUCCESS;
