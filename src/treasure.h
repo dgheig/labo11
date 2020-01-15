@@ -31,8 +31,8 @@ typedef std::vector<Axe> Map;
 
 int getRandomInRange(int max, int min = 0);
 
-int getHeight(Map& map);
-int getWidth(Map& map);
+size_t getHeight(const Map& map);
+size_t getWidth(const Map& map);
 
 Map getEmptyMap(size_t height, size_t width);
 
@@ -49,6 +49,6 @@ Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 
 void displayWorld(const Map& map);
 void displayWorld2(const Map& map);
-void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
+// void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
 
 #endif // TREASURE_H

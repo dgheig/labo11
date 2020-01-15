@@ -17,21 +17,32 @@ void _addLake(Map& map, size_t originX, size_t originY, size_t radius);
 // }
 
 bool _checkIfLakeCanBeAdd(Map& map, size_t originX, size_t originY, size_t radius) {
-<<<<<<< HEAD
-    size_t minHeight = ((int)originY - (int)radius) > 0 ? ((int)originY - (int)radius) : 0;
-    size_t maxHeight = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
+    size_t mapHeight = getHeight(map) - 1;
+    size_t mapWidth  = getWidth(map) - 1;
 
+    size_t minHeight = ((int)originY - (int)radius) > 0 ? ((int)originY - (int)radius) : 0;
+    size_t maxHeight = (originY + radius) > mapHeight ? mapHeight : (originY + radius);
+
+
+    // #ifdef DEBUG
     // cout << "minHeight: " << minHeight << endl;
     // cout << "maxHeight: " << maxHeight << endl;
+    // #endif
+
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
         size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
-        size_t maxWidth = (originX + lineHalfWidth) > getWidth(map) ? getWidth(map) : (originX + lineHalfWidth);
+        size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
 
+
+        // #ifdef DEBUG
         // cout << "lineHalfWidth: " << lineHalfWidth << endl;
         // cout << "minWidth: " << minWidth << endl;
         // cout << "maxWidth: " << maxWidth << endl;
+        // #endif
+
         for (size_t width = minWidth; width <= maxWidth; ++width) {
+            cerr << height << '-' << width << endl;
             if (map[height][width] != MS_EARTH) return false;
         }
     }
@@ -39,53 +50,42 @@ bool _checkIfLakeCanBeAdd(Map& map, size_t originX, size_t originY, size_t radiu
 }
 
 void _addLake(Map& map, size_t originX, size_t originY, size_t radius) {
-    size_t minHeight = ((int)originY - (int)radius) > 0 ? ((int)originY - (int)radius) : 0;
-    size_t maxHeight = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
+    size_t mapHeight = getHeight(map) - 1;
+    size_t mapWidth  = getWidth(map) - 1;
 
-    // cout << "minHeight: " << minHeight << endl;
-    // cout << "maxHeight: " << maxHeight << endl;
+    size_t minHeight = ((int)originY - (int)radius) > 0 ? ((int)originY - (int)radius) : 0;
+    size_t maxHeight = (originY + radius) > mapHeight ? mapHeight : (originY + radius);
+
+
+    #ifdef DEBUG
+    cout << "mapHeight: " << mapHeight << endl;
+    cout << "mapWidth: " << mapWidth << endl;
+    cout << "minHeight: " << minHeight << endl;
+    cout << "maxHeight: " << maxHeight << endl;
+    cout << endl;
+    #endif
+
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
         size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
-        size_t maxWidth = (originX + lineHalfWidth) > getWidth(map) ? getWidth(map) : (originX + lineHalfWidth);
+        size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
 
-        // cout << "lineHalfWidth: " << lineHalfWidth << endl;
-        // cout << "minWidth: " << minWidth << endl;
-        // cout << "maxWidth: " << maxWidth << endl;
+        #ifdef DEBUG
+        cout << "lineHalfWidth: " << lineHalfWidth << endl;
+        cout << "minWidth: " << minWidth << endl;
+        cout << "maxWidth: " << maxWidth << endl;
+        cout << endl;
+        #endif
+
         for (size_t width = minWidth; width <= maxWidth; ++width) {
+        #ifdef DEBUG
+        cout << "height: " << height << endl;
+        cout << "width: " << width << endl;
+        cout << endl;
+        #endif
             map[height][width] = MS_WATER;
         }
     }
-}
-=======
-   size_t minHeight = ((int) originY - (int) radius) > 0 ? ((int) originY - (int) radius) : 0;
-   size_t maxHeight = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
-
-   for (size_t height = minHeight; height = < maxHeight; ++height) {
-      size_t lineHalfWidth = abs(originY - height);
-      size_t minWidth = ((int) originX - (int) lineHalfWidth) > 0 ? ((int) originX - (int) lineHalfWidth) : 0;
-      size_t maxWidth = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
-
-      for (size_t width = minWidth; width = < maxWidth; ++width) {
-         if (map[height][width] != MS_EARTH) return false;
-      }
-   }
-}
-
-void _addLake(Map& map, size_t originX, size_t originY, size_t radius) {
-   size_t minHeight = ((int) originY - (int) radius) > 0 ? ((int) originY - (int) radius) : 0;
-   size_t maxHeight = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
->>>>>>> b78d638ccfd277d6418471c5bd34cde8705aeb31
-
-   for (size_t height = minHeight; height = < maxHeight; ++height) {
-      size_t lineHalfWidth = abs(originY - height);
-      size_t minWidth = ((int) originX - (int) lineHalfWidth) > 0 ? ((int) originX - (int) lineHalfWidth) : 0;
-      size_t maxWidth = (originY + radius) > getHeight(map) ? getHeight(map) : (originY + radius);
-
-      for (size_t width = minWidth; width = < maxWidth; ++width) {
-         map[height][width] = MS_WATER;
-      }
-   }
 }
 
 int getRandomInRange(int max, int min) {
@@ -102,13 +102,13 @@ int getRandomInRange(int max, int min) {
    }
 }
 
-int getHeight(Map& map) {
+size_t getHeight(const Map& map) {
    return map.size();
 }
 
-int getWidth(Map& map) {
-   if (getHeight(map) == 0) return 0;
-   return map[0].size();
+size_t getWidth(const Map& map) {
+   if (map.size()) return map[0].size();
+   return 0;
 }
 
 Map getEmptyMap(size_t height, size_t width) {
@@ -137,14 +137,14 @@ void addRandomTreasure(Map& map) {
 // if | origin1 - origin2 | > radius1 + radius2, then, they don't touch each other
 
 bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
-   if (!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
+//    if (!_checkIfLakeCanBeAdd(map, originX, originY, radius)) return false;
    _addLake(map, originX, originY, radius);
    return true;
 }
 
 void addRandomLake(Map& map) {
 
-    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 3;
+    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 10;
     size_t radius;
     size_t height;
     size_t width;
@@ -152,10 +152,13 @@ void addRandomLake(Map& map) {
         radius = getRandomInRange(maxRadius);
         height = getRandomInRange(getHeight(map));
         width = getRandomInRange(getWidth(map));
+        #ifdef DEBUG
         cout << "addRandomLake called" << endl;
+        cout << "maxRadius: " << maxRadius << endl;
         cout << "radius: " << radius << endl;
-        cout << "height: " << radius << endl;
-        cout << "width: " << radius << endl;
+        cout << "height: " << height << endl;
+        cout << "width: " << width << endl;
+        #endif
     } while (addLake(map, height, width, radius));
 }
 
@@ -167,6 +170,7 @@ bool addStart(Map& map, size_t x, size_t y) {
     map[x][y] = MS_START;
     return true;
 }
+
 void addRandomStart(Map& map) {
     size_t x;
     size_t y;
@@ -177,15 +181,15 @@ void addRandomStart(Map& map) {
 }
 
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
-   const int numberOfLake = 3;
+   const int numberOfLake = 1;
 
    Map map = getEmptyMap(heigth, width);
 
    for (int i = 0; i < numberOfLake; ++i) {
       addRandomLake(map);
    }
-   addRandomTreasure(map);
-   addRandomStart(map);
+//    addRandomTreasure(map);
+//    addRandomStart(map);
 
    return map;
 }
@@ -218,61 +222,34 @@ void displayWorld(const Map& map) {
     }
 }
 
-void displayWorld2(const Map& map) {
-    for(const auto& axe : map) {
-        for(const auto state: axe) {
-            switch (state)
-            {
-            case MS_TREASURE:
-                cout << 'O';
-                break;
+// void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>&simulationStatus) {
+//    int steps = 0;
 
-            case MS_WATER:
-                cout << 'W';
-                break;
+//    size_t currentX = startX;
+//    size_t currentY = startY;
 
-            case MS_START:
-                cout << 'Y';
-                break;
+//    do {
 
-            case MS_EARTH:
-            default:
-                cout << 'x';
-                break;
-            }
-        }
-        cout << endl;
-    }
-}
+//       Directions direction = getRandomInRange(3);
 
-void runSimulation(Map map, size_t startX, size_t startY, std::vector<std::vector<int>>&simulationStatus) {
-   int steps = 0;
-
-   size_t currentX = startX;
-   size_t currentY = startY;
-
-   do {
-
-      Directions direction = getRandomInRange(3);
-
-      switch (direction) {
-         case NORTH:
-            currentY++;
-            break;
-         case EAST:
-            currentX++;
-            break;
-         case SOUTH:
-            currentY--;
-            break;
-         case WEST:
-            currentX--;
-            break;
-      }
+//       switch (direction) {
+//          case NORTH:
+//             currentY++;
+//             break;
+//          case EAST:
+//             currentX++;
+//             break;
+//          case SOUTH:
+//             currentY--;
+//             break;
+//          case WEST:
+//             currentX--;
+//             break;
+//       }
 
 
 
-      ++steps;
+//       ++steps;
 
-   } while (steps < (getHeight(map) * getWidth(map)));
-}
+//    } while (steps < (getHeight(map) * getWidth(map)));
+// }

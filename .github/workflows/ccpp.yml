@@ -2,47 +2,47 @@ name: C/C++ CI
 
 on: [push]
 
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@master
+#     steps:
+#     - uses: actions/checkout@master
 
-    - name: compile labo11
-      run: make labo11
+#     - name: compile labo11
+#       run: make labo11
 
-    # - name: run labo10
-    #   run: ./bin/labo10  < tests/inputs/inputs1.txt
+#     # - name: run labo10
+#     #   run: ./bin/labo10  < tests/inputs/inputs1.txt
 
 
-  cmake:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
+#   cmake:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@master
 
-    - name: run cmake
-      run: make cmake
+#     - name: run cmake
+#       run: make cmake
 
-    # - name: run labo10 with inputs1
-    #   run: ./bin/labo10 < tests/inputs/inputs1.txt
+#     # - name: run labo10 with inputs1
+#     #   run: ./bin/labo10 < tests/inputs/inputs1.txt
 
-    # - name: run labo10 with inputs2
-    #   run: ./bin/labo10 < tests/inputs/inputs2.txt
+#     # - name: run labo10 with inputs2
+#     #   run: ./bin/labo10 < tests/inputs/inputs2.txt
 
-  tests:
+#   tests:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@master
+#     steps:
+#     - uses: actions/checkout@master
 
-    - name: compile tests
-      run: make compile_tests
+#     - name: compile tests
+#       run: make compile_tests
 
-    # - name: test test_point_get
-    #   run: ./bin/test_point_get
+#     # - name: test test_point_get
+#     #   run: ./bin/test_point_get
 
-    # - name: test test_point_set
-    #   run: ./bin/test_point_set
+#     # - name: test test_point_set
+#     #   run: ./bin/test_point_set

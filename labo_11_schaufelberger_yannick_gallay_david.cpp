@@ -23,7 +23,7 @@ using namespace std;
 
 int main() {
     size_t startX, startY;
-    Map world = initWorld(50, 50, startX, startY);
+    Map world = initWorld(100, 100, startX, startY);
     // displayWorld(world);
     cout << endl;
     // displayWorld2(world);
