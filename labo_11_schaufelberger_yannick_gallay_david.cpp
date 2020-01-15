@@ -26,6 +26,7 @@ int main() {
     Map world = initWorld(100, 100, startX, startY);
     displayWorld(world);
     cout << endl;
+    cout << "x:" << startX << "\ty: " << startY << endl;
 
     WAIT_ENTER;
     return EXIT_SUCCESS;

@@ -97,7 +97,7 @@ void addRandomTreasure(Map& map) {
     do {
         x = getRandomInRange(getHeight(map));
         y = getRandomInRange(getWidth(map));
-    } while (addTreasure(map, x, y));
+    } while (!addTreasure(map, x, y));
 }
 
 // NB: if lake are added first, we could get their origins and radius
@@ -144,7 +144,14 @@ void addRandomStart(Map& map) {
     do {
         x = getRandomInRange(getHeight(map));
         y = getRandomInRange(getWidth(map));
-    } while (addStart(map, x, y));
+    } while (!addStart(map, x, y));
+}
+
+void addRandomStart(Map& map, size_t& x, size_t& y) {
+    do {
+        x = getRandomInRange(getHeight(map));
+        y = getRandomInRange(getWidth(map));
+    } while (!addStart(map, x, y));
 }
 
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
@@ -155,8 +162,8 @@ Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
    for (int i = 0; i < NUMBER_OF_LAKE; ++i) {
       addRandomLake(map);
    }
-//    addRandomTreasure(map);
-//    addRandomStart(map);
+   addRandomTreasure(map);
+   addRandomStart(map, x, y);
 
    return map;
 }

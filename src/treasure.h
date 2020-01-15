@@ -44,6 +44,7 @@ void addRandomLake(Map& map);
 
 bool addStart(Map& map, size_t x, size_t y);
 void addRandomStart(Map& map);
+void addRandomStart(Map& map, size_t& x, size_t& y);
 
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 
