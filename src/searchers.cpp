@@ -3,23 +3,28 @@
 #include <cstdlib>
 #include <vector>
 
+enum SearcherAttributeIndex {
+   SAI_STEPS,
+   SAI_STATUS
+};
+
 int getSteps(const Searcher& searcher) {
-   return searcher[0];
+   return searcher[SAI_STEPS];
 }
 
 int getStatus(const Searcher& searcher) {
-   return searcher[1];
+   return searcher[SAI_STATUS];
 }
 
 bool setSteps(Searcher& searcher, int value) {
-   searcher[0] = value;
+   searcher[SAI_STEPS] = value;
    return true;
 }
 
 bool setStatus(Searcher& searcher, ResearcherStatus value) {
    if (value > EXHAUSTED)
       return false;
-   searcher[1] = value;
+   searcher[SAI_STATUS] = value;
    return true;
 }
 
@@ -28,8 +33,8 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
 
    size_t currentX = startX;
    size_t currentY = startY;
-   
-   int maxSteps = (int)getHeight(map) * (int)getWidth(map);
+
+   int maxSteps = (int)(getHeight(map) * getWidth(map));
 
    do {
 
@@ -49,7 +54,7 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             currentX--;
             break;
       }
-      
+
       ++steps;
 
       if (currentX > getWidth(map) or currentY > getHeight(map)) {
@@ -67,7 +72,7 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
          setStatus(searcher, RICH);
          break;
       }
-      
+
       if (steps == maxSteps) {
          setSteps(searcher, steps);
          setStatus(searcher, EXHAUSTED);
