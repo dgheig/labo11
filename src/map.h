@@ -1,7 +1,8 @@
-#ifndef TREASURE_H
-#define TREASURE_H
+#ifndef MAP_H
+#define MAP_H
 
-#include "map.h"
+#include <cstdlib> //size_t
+#include <vector>
 
 enum MapState {
     MS_EARTH,
@@ -9,7 +10,6 @@ enum MapState {
     MS_TREASURE,
     MS_START
 };
-
 
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
@@ -36,4 +36,4 @@ Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 void displayWorld(const Map& map);
 void displayWorld2(const Map& map);
 
-#endif // TREASURE_H
+#endif // MAP_H
