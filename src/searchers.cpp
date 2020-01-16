@@ -1,31 +1,35 @@
-
 #include "searchers.h"
 #include "map.h"
 #include <cstdlib>
 #include <vector>
 
-
-int getStatus(std::vector<std::vector<int>>& simulationStatus, int id) {
-   
+int getSteps(const Searcher& searcher) {
+   return searcher[0];
 }
 
-int getSteps(std::vector<std::vector<int>>& simulationStatus, int id) {
-   
+int getStatus(const Searcher& searcher) {
+   return searcher[1];
 }
 
-void setStatus(std::vector<std::vector<int>>& simulationStatus, int id, int value) {
-   
+bool setSteps(Searcher& searcher, int value) {
+   searcher[0] = value;
+   return true;
 }
 
-void setSteps(std::vector<std::vector<int>>& simulationStatus, int id, int value) {
-   
+bool setStatus(Searcher& searcher, ResearcherStatus value) {
+   if (value > EXHAUSTED)
+      return false;
+   searcher[1] = value;
+   return true;
 }
 
-void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>&simulationStatus) {
+void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher) {
    int steps = 0;
 
    size_t currentX = startX;
    size_t currentY = startY;
+   
+   int maxSteps = (int)getHeight(map) * (int)getWidth(map);
 
    do {
 
@@ -45,10 +49,30 @@ void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std
             currentX--;
             break;
       }
-
-
-
+      
       ++steps;
 
-   } while (steps < (getHeight(map) * getWidth(map)));
+      if (currentX > getWidth(map) or currentY > getHeight(map)) {
+         setSteps(searcher, steps);
+         setStatus(searcher, LOST);
+         break;
+      }
+
+      if (getMapValue(map, currentX, currentY) == MS_WATER) {
+         setSteps(searcher, steps);
+         setStatus(searcher, DROWNED);
+         break;
+      } else if (getMapValue(map, currentX, currentY) == MS_TREASURE) {
+         setSteps(searcher, steps);
+         setStatus(searcher, RICH);
+         break;
+      }
+      
+      if (steps == maxSteps) {
+         setSteps(searcher, steps);
+         setStatus(searcher, EXHAUSTED);
+         break;
+      }
+
+   } while (steps < maxSteps);
 }

@@ -19,12 +19,15 @@ enum ResearcherStatus {
    EXHAUSTED
 };
 
-int getStatus(std::vector<std::vector<int>>& simulationStatus, int id);
-int getSteps(std::vector<std::vector<int>>& simulationStatus, int id);
+typedef std::vector<int> Searcher;
+typedef std::vector<Searcher> SearcherList;
 
-void setStatus(std::vector<std::vector<int>>& simulationStatus, int id, int value);
-void setSteps(std::vector<std::vector<int>>& simulationStatus, int id, int value);
+int getSteps(const Searcher& searcher);
+int getStatus(const Searcher& searcher);
 
-void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
+bool setSteps(Searcher& searcher, int value);
+bool setStatus(Searcher& searcher, ResearcherStatus value);
+
+void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 
 #endif //SEARCHERS_H

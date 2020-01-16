@@ -68,6 +68,12 @@ Map getEmptyMap(size_t height, size_t width) {
    return Map(height, Axe(width, MS_EARTH));
 }
 
+MapState getMapValue(const Map& map, size_t x, size_t y) {
+   if (y >= getHeight(map) or x >= getWidth(map))
+      return MS_EARTH;
+   return map[y][x];
+}
+
 bool addTreasure(Map& map, size_t x, size_t y) {
     if (y >= getHeight(map) or x >= getWidth(map))
         return false;
