@@ -11,20 +11,6 @@ enum MapState {
     MS_START
 };
 
-enum Directions {
-   NORTH,
-   EAST,
-   SOUTH,
-   WEST
-};
-
-enum ResearcherStatus {
-   RICH,
-   LOST,
-   DROWNED,
-   EXHAUSTED
-};
-
 
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
@@ -50,6 +36,5 @@ Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 
 void displayWorld(const Map& map);
 void displayWorld2(const Map& map);
-// void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
 
 #endif // TREASURE_H
