@@ -22,11 +22,11 @@ enum ResearcherStatus {
 typedef std::vector<int> Searcher;
 typedef std::vector<Searcher> SearcherList;
 
-int getStatus(const Searcher& searcher);
 int getSteps(const Searcher& searcher);
+int getStatus(const Searcher& searcher);
 
-void setStatus(Searcher& searcher, int value);
-void setSteps(Searcher& searcher, int value);
+bool setSteps(Searcher& searcher, int value);
+bool setStatus(Searcher& searcher, int value);
 
 void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 

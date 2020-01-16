@@ -3,20 +3,24 @@
 #include <cstdlib>
 #include <vector>
 
-int getStatus(const std::vector<std::vector<int>>&searcherStatus, int id) {
-   
+int getSteps(const Searcher& searcher) {
+   return searcher[0];
 }
 
-int getSteps(const std::vector<std::vector<int>>&searcherStatus, int id) {
-   
+int getStatus(const Searcher& searcher) {
+   return searcher[1];
 }
 
-void setStatus(std::vector<std::vector<int>>&searcherStatus, int id, int value) {
-   
+bool setSteps(Searcher& searcher, int value) {
+   searcher[0] = value;
+   return true;
 }
 
-void setSteps(std::vector<std::vector<int>>&searcherStatus, int id, int value) {
-   
+bool setStatus(Searcher& searcher, ResearcherStatus value) {
+   if (value > EXHAUSTED)
+      return false;
+   searcher[1] = value;
+   return true;
 }
 
 void runSearcher(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>&searcherStatus, int idSearcher) {
@@ -50,24 +54,24 @@ void runSearcher(const Map& map, size_t startX, size_t startY, std::vector<std::
 
       if (currentX < 0 || currentX > getWidth() ||
           currentY < 0 || currentY > getHeight()) {
-         setStatus(searcherStatus, idSearcher, (int)LOST);
          setSteps(searcherStatus, idSearcher, steps);
+         setStatus(searcherStatus, idSearcher, LOST);
          break;
       }
 
       if (getMapValue(currentX, currentY) == MS_WATER) {
-         setStatus(searcherStatus, idSearcher, (int)DROWNED);
          setSteps(searcherStatus, idSearcher, steps);
+         setStatus(searcherStatus, idSearcher, DROWNED);
          break;
       } else if (getMapValue(currentX, currentY) == MS_TREASURE) {
-         setStatus(searcherStatus, idSearcher, (int)RICH);
          setSteps(searcherStatus, idSearcher, steps);
+         setStatus(searcherStatus, idSearcher, RICH);
          break;
       }
       
       if (steps == maxSteps) {
-         setStatus(searcherStatus, idSearcher, (int)EXHAUSTED);
          setSteps(searcherStatus, idSearcher, steps);
+         setStatus(searcherStatus, idSearcher, EXHAUSTED);
          break;
       }
 
