@@ -5,6 +5,7 @@
 #include <vector>
 
 enum MapState {
+    MS_OUT,
     MS_EARTH,
     MS_WATER,
     MS_TREASURE,

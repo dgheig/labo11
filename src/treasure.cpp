@@ -1,6 +1,5 @@
 #include "treasure.h"
 #include "map.h"
-// #include "treasure.h"
 
 using namespace std;
 
