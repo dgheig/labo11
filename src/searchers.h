@@ -1,6 +1,7 @@
 #ifndef SEARCHERS_H
 #define SEARCHERS_H
 
+#include "map.h"
 #include <cstdlib> //size_t
 #include <vector>
 
@@ -17,9 +18,6 @@ enum ResearcherStatus {
    DROWNED,
    EXHAUSTED
 };
-
-typedef std::vector<MapState> Axe;
-typedef std::vector<Axe> Map;
 
 int getStatus(std::vector<std::vector<int>>& simulationStatus, int id);
 int getSteps(std::vector<std::vector<int>>& simulationStatus, int id);

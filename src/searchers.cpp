@@ -1,3 +1,10 @@
+
+#include "searchers.h"
+#include "map.h"
+#include <cstdlib>
+#include <vector>
+
+
 int getStatus(std::vector<std::vector<int>>& simulationStatus, int id) {
    
 }
@@ -22,7 +29,7 @@ void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std
 
    do {
 
-      Directions direction = getRandomInRange(3);
+      Directions direction = (Directions)getRandomInRange(3);
 
       switch (direction) {
          case NORTH:
