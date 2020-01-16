@@ -70,7 +70,7 @@ Map getEmptyMap(size_t height, size_t width) {
 
 MapState getMapValue(const Map& map, size_t x, size_t y) {
    if (y >= getHeight(map) or x >= getWidth(map))
-      return MS_EARTH;
+      return MS_OUT;
    return map[y][x];
 }
 

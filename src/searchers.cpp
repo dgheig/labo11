@@ -31,11 +31,9 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
    
    int maxSteps = (int)getHeight(map) * (int)getWidth(map);
 
-   do {
+   for (int steps = 0; steps < maxSteps; ++steps) {
 
-      Directions direction = (Directions)getRandomInRange(3);
-
-      switch (direction) {
+      switch ((Directions)getRandomInRange(3)) {
          case NORTH:
             currentY++;
             break;
@@ -49,16 +47,12 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             currentX--;
             break;
       }
-      
-      ++steps;
 
-      if (currentX > getWidth(map) or currentY > getHeight(map)) {
+      if (getMapValue(map, currentX, currentY) == MS_OUT) {
          setSteps(searcher, steps);
          setStatus(searcher, LOST);
          break;
-      }
-
-      if (getMapValue(map, currentX, currentY) == MS_WATER) {
+      } else if (getMapValue(map, currentX, currentY) == MS_WATER) {
          setSteps(searcher, steps);
          setStatus(searcher, DROWNED);
          break;
@@ -74,5 +68,5 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
          break;
       }
 
-   } while (steps < maxSteps);
+   }
 }
