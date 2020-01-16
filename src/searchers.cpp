@@ -23,7 +23,7 @@ bool setStatus(Searcher& searcher, ResearcherStatus value) {
    return true;
 }
 
-void runSearcher(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>&searcherStatus, int idSearcher) {
+void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher) {
    int steps = 0;
 
    size_t currentX = startX;
@@ -52,26 +52,25 @@ void runSearcher(const Map& map, size_t startX, size_t startY, std::vector<std::
       
       ++steps;
 
-      if (currentX < 0 || currentX > getWidth() ||
-          currentY < 0 || currentY > getHeight()) {
-         setSteps(searcherStatus, idSearcher, steps);
-         setStatus(searcherStatus, idSearcher, LOST);
+      if (currentX > getWidth(map) or currentY > getHeight(map)) {
+         setSteps(searcher, steps);
+         setStatus(searcher, LOST);
          break;
       }
 
-      if (getMapValue(currentX, currentY) == MS_WATER) {
-         setSteps(searcherStatus, idSearcher, steps);
-         setStatus(searcherStatus, idSearcher, DROWNED);
+      if (getMapValue(map, currentX, currentY) == MS_WATER) {
+         setSteps(searcher, steps);
+         setStatus(searcher, DROWNED);
          break;
-      } else if (getMapValue(currentX, currentY) == MS_TREASURE) {
-         setSteps(searcherStatus, idSearcher, steps);
-         setStatus(searcherStatus, idSearcher, RICH);
+      } else if (getMapValue(map, currentX, currentY) == MS_TREASURE) {
+         setSteps(searcher, steps);
+         setStatus(searcher, RICH);
          break;
       }
       
       if (steps == maxSteps) {
-         setSteps(searcherStatus, idSearcher, steps);
-         setStatus(searcherStatus, idSearcher, EXHAUSTED);
+         setSteps(searcher, steps);
+         setStatus(searcher, EXHAUSTED);
          break;
       }
 

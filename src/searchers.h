@@ -26,7 +26,7 @@ int getSteps(const Searcher& searcher);
 int getStatus(const Searcher& searcher);
 
 bool setSteps(Searcher& searcher, int value);
-bool setStatus(Searcher& searcher, int value);
+bool setStatus(Searcher& searcher, ResearcherStatus value);
 
 void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 
