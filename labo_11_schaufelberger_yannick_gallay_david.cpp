@@ -23,10 +23,10 @@ using namespace std;
 
 int main() {
     size_t startX, startY;
-    Map world = initWorld(100, 100, startX, startY);
+    Map world = initWorld(20, 20, startX, startY);
     displayWorld(world);
-    cout << endl;
-    cout << "x:" << startX << "\ty: " << startY << endl;
+    SearcherList list = runSimulation(world, startX, startY, 10);
+    displayList(list);
 
     WAIT_ENTER;
     return EXIT_SUCCESS;

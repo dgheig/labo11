@@ -1,7 +1,8 @@
 #include "searchers.h"
 #include "map.h"
-#include <cstdlib>
 #include <vector>
+#include <string>
+#include <iostream>
 
 enum SearcherAttributeIndex {
    SAI_STEPS,
@@ -30,5 +31,23 @@ bool setStatus(Searcher& searcher, ResearcherStatus value) {
    if (value > EXHAUSTED)
       return false;
    searcher[SAI_STATUS] = value;
+   return true;
+}
+
+bool displayList(SearcherList& list) {
+   if (list.empty())
+      return false;
+   
+   std::string researcherStatusTab[] = {
+      "UNDEFINED",
+      "RICH",
+      "LOST",
+      "DROWNED",
+      "EXHAUSTED"
+   };
+   
+   for (Searcher& searcher : list) {
+      std::cout << "Steps : " << getSteps(searcher) << "\tStatus : " << researcherStatusTab[getStatus(searcher)] << std::endl;
+   }
    return true;
 }

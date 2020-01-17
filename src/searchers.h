@@ -24,4 +24,6 @@ int getStatus(const Searcher& searcher);
 bool setSteps(Searcher& searcher, int value);
 bool setStatus(Searcher& searcher, ResearcherStatus value);
 
+bool displayList(SearcherList& list);
+
 #endif //SEARCHERS_H
