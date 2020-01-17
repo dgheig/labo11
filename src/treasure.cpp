@@ -2,8 +2,6 @@
 #include "map.h"
 #include "searchers.h"
 
-using namespace std;
-
 enum Directions {
    NORTH,
    EAST,

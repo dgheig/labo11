@@ -23,9 +23,9 @@ using namespace std;
 
 int main() {
     size_t startX, startY;
-    Map world = initWorld(20, 20, startX, startY);
+    Map world = initWorld(50, 50, startX, startY);
     displayWorld(world);
-    SearcherList list = runSimulation(world, startX, startY, 10);
+    SearcherList list = runSimulation(world, startX, startY, 500);
     displayList(list);
 
     WAIT_ENTER;
