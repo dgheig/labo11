@@ -1,6 +1,7 @@
 #include "treasure.h"
 #include "map.h"
 #include "searchers.h"
+#include <algorithm>
 
 enum Directions {
    NORTH,
@@ -66,4 +67,21 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             break;
       }
    }
+}
+
+bool IsRich(Searcher searcher) {
+   return (getStatus(searcher) == RICH);
+}
+
+void getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
+   probability = (double) std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
+
+   int sum = 0, counter = 0;
+   for (const Searcher& searcher : list) {
+      if (getStatus(searcher) == RICH) {
+         sum += getSteps(searcher);
+         ++counter;
+      }
+   }
+   avgSteps = (double)sum / (double)counter;
 }
