@@ -5,14 +5,8 @@
 #include <cstdlib> //size_t
 #include <vector>
 
-enum Directions {
-   NORTH,
-   EAST,
-   SOUTH,
-   WEST
-};
-
 enum ResearcherStatus {
+   UNDEFINED,
    RICH,
    LOST,
    DROWNED,
@@ -22,12 +16,12 @@ enum ResearcherStatus {
 typedef std::vector<int> Searcher;
 typedef std::vector<Searcher> SearcherList;
 
+Searcher initSearcher(int stepsValue = 0, ResearcherStatus statusValue = UNDEFINED);
+
 int getSteps(const Searcher& searcher);
 int getStatus(const Searcher& searcher);
 
 bool setSteps(Searcher& searcher, int value);
 bool setStatus(Searcher& searcher, ResearcherStatus value);
-
-void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 
 #endif //SEARCHERS_H

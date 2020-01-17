@@ -4,6 +4,8 @@
 #include "map.h"
 #include "searchers.h"
 
-// void runSimulation(const Map& map, size_t startX, size_t startY, std::vector<std::vector<int>>& simulationStatus);
+SearcherList runSimulation(const Map& map, size_t startX, size_t startY, int nbSimulation);
+
+void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 
 #endif // TREASURE_H
