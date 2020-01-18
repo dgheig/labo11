@@ -4,6 +4,11 @@
 #include "utilities.h"
 #include <algorithm>
 
+#ifdef DEBUG
+   #include <iostream>
+   using namespace std;
+#endif
+
 enum Directions {
    NORTH,
    EAST,
@@ -27,6 +32,10 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
 
    int maxSteps = (int)(getHeight(map) * getWidth(map));
    int steps = 0;
+
+   #ifdef DEBUG
+      Map displayMap = map;
+   #endif
    for (; steps < maxSteps and getStatus(searcher) == UNDEFINED; ++steps) {
 
       switch ((Directions)getRandomInRange(3)) {
@@ -55,7 +64,17 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             setStatus(searcher, RICH);
             break;
       }
+
+      #ifdef DEBUG
+         if(getStatus(searcher) != LOST)
+            displayMap[currentY][currentX] = MS_START;
+      #endif
    }
+
+   #ifdef DEBUG
+      displayWorld(displayMap);
+      cout << endl;
+   #endif
 
    if (steps == maxSteps) {
       setStatus(searcher, EXHAUSTED);

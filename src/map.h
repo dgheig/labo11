@@ -36,6 +36,5 @@ void addRandomStart(Map& map, size_t& x, size_t& y);
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y);
 
 void displayWorld(const Map& map);
-void displayWorld2(const Map& map);
 
 #endif // MAP_H
