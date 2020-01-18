@@ -4,15 +4,6 @@
 #include <string>
 #include <iostream>
 
-
-std::string ResearcherStatusStringTab[] = {
-      "UNDEFINED",
-      "RICH",
-      "LOST",
-      "DROWNED",
-      "EXHAUSTED"
-};
-
 enum SearcherAttributeIndex {
    SAI_STEPS,
    SAI_STATUS
@@ -35,7 +26,19 @@ int getStatus(const Searcher& searcher) {
 }
 
 std::string getStatusString(const Searcher& searcher) {
-   return ResearcherStatusStringTab[getStatus(searcher)];
+   switch (getStatus(searcher)) {
+   case RICH:
+      return "RICH";
+   case LOST:
+      return "LOST";
+   case DROWNED:
+      return "DROWNED";
+   case EXHAUSTED:
+      return "EXHAUSTED";
+   case UNDEFINED:
+   default:
+      return "UNDEFINED";
+   }
 }
 
 bool setSteps(Searcher& searcher, int value) {

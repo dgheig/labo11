@@ -65,8 +65,8 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
       }
 
       #ifdef DEBUG
-         if(getStatus(searcher) != LOST)
-            displayMap[currentY][currentX] = MS_START;
+         if(getStatus(searcher) != LOST and getMapValue(map, currentX, currentY) != MS_START)
+            setMapValue(displayMap, currentX, currentY, MS_TREASURE);
       #endif
    }
 
@@ -86,7 +86,8 @@ bool IsRich(Searcher searcher) {
    return (getStatus(searcher) == RICH);
 }
 
-void getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
+bool getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
+   if (list.empty()) return false;
    probability = (double) std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
 
    int sum = 0, counter = 0;
@@ -97,4 +98,5 @@ void getStatistics(const SearcherList& list, double& probability, double& avgSte
       }
    }
    avgSteps = (double)sum / (double)counter;
+   return true;
 }

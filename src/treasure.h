@@ -8,6 +8,6 @@ SearcherList runSimulation(const Map& map, size_t startX, size_t startY, int nbS
 
 void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searcher);
 
-void getStatistics(const SearcherList& list, double& probability, double& avgSteps);
+bool getStatistics(const SearcherList& list, double& probability, double& avgSteps);
 
 #endif // TREASURE_H
