@@ -9,9 +9,5 @@ int getRandomInRange(int max, int min) {
       firstTime = false;
    }
 
-   if (min < max) {
-      return rand() % (max - min + 1) + min;
-   } else {
-      return rand() % (min - max + 1) + max;
-   }
+   return rand() % (max - min + 1) + min;
 }

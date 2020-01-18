@@ -1,6 +1,7 @@
 #include "treasure.h"
 #include "map.h"
 #include "searchers.h"
+#include "utilities.h"
 #include <algorithm>
 
 enum Directions {

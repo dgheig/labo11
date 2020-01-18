@@ -15,8 +15,6 @@ enum MapState {
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
 
-int getRandomInRange(int max, int min = 0);
-
 size_t getHeight(const Map& map);
 size_t getWidth(const Map& map);
 
