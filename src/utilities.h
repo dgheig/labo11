@@ -1,3 +1,21 @@
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : labo_11
+Fichier     : utilities.h
+Auteur(s)   : Yannick Schaufelberger et David Gallay
+Date        : 18.01.2020
+
+But         : Run one or more simulation of treasure hunt.
+              The searchers progress randomly through a map.
+              Statistics about the simulation are displayed at the end.
+Remarque(s) :
+
+                There is the github repository:
+                https://github.com/dgheig/labo11
+
+Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+-----------------------------------------------------------------------------------*/
+
 #ifndef UTILITES_h
 #define UTILITES_h
 

@@ -1,3 +1,19 @@
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : labo_11
+Fichier     : map.h
+Auteur(s)   : Yannick Schaufelberger et David Gallay
+Date        : 18.01.2020
+
+But         :
+Remarque(s) :
+
+                There is the github repository:
+                https://github.com/dgheig/labo11
+
+Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+-----------------------------------------------------------------------------------*/
+
 #ifndef MAP_H
 #define MAP_H
 

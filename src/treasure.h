@@ -1,3 +1,19 @@
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : labo_11
+Fichier     : treasure.h
+Auteur(s)   : Yannick Schaufelberger et David Gallay
+Date        : 18.01.2020
+
+But         :
+Remarque(s) :
+
+                There is the github repository:
+                https://github.com/dgheig/labo11
+
+Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+-----------------------------------------------------------------------------------*/
+
 #ifndef TREASURE_H
 #define TREASURE_H
 
@@ -30,7 +46,7 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
  * @param list
  * @param probability
  * @param avgSteps
- * @return 
+ * @return
  */
 bool getStatistics(const SearcherList& list, double& probability, double& avgSteps);
 

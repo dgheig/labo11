@@ -3,9 +3,11 @@
 Laboratoire : labo_11
 Fichier     : labo_11_schaufelberger_yannick_gallay_david.cpp
 Auteur(s)   : Yannick Schaufelberger et David Gallay
-Date        :
+Date        : 18.01.2020
 
-But         :
+But         : Run one or more simulation of treasure hunt.
+              The searchers progress randomly through a map.
+              Statistics about the simulation are displayed at the end.
 Remarque(s) :
 
                 There is the github repository:
