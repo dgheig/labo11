@@ -69,7 +69,7 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
    }
 }
 
-bool IsRich(Searcher searcher) {
+bool IsRich(const Searcher& searcher) {
    return (getStatus(searcher) == RICH);
 }
 

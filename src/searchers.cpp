@@ -34,7 +34,7 @@ bool setStatus(Searcher& searcher, ResearcherStatus value) {
    return true;
 }
 
-bool displayList(SearcherList& list) {
+bool displayList(const SearcherList& list) {
    if (list.empty())
       return false;
    
