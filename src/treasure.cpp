@@ -2,7 +2,6 @@
 #include "map.h"
 #include "searchers.h"
 #include "utilities.h"
-#include <algorithm>
 
 #ifdef DEBUG
    #include <iostream>
