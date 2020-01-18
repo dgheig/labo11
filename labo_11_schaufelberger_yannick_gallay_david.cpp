@@ -26,7 +26,7 @@ int main() {
     Map world = initWorld(50, 50, startX, startY);
     displayWorld(world);
     SearcherList list = runSimulation(world, startX, startY, 500);
-    displayList(list);
+    displaySearcherList(list);
     double probability = 0, avgSteps = 0.0;
     getStatistics(list, probability, avgSteps);
     cout << "probability : " << probability << "\tavgSteps : " << avgSteps << endl;

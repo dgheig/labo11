@@ -60,8 +60,8 @@ size_t getHeight(const Map& map) {
 }
 
 size_t getWidth(const Map& map) {
-   if (map.size()) return map[0].size();
-   return 0;
+   if (map.empty()) return 0;
+   return map[0].size();
 }
 
 Map getEmptyMap(size_t height, size_t width) {
@@ -102,8 +102,11 @@ bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
 }
 
 void addRandomLake(Map& map) {
-
     int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 3;
+    addRandomLake(map, maxRadius);
+}
+
+void addRandomLake(Map& map, size_t maxRadius) {
     size_t radius;
     size_t height;
     size_t width;

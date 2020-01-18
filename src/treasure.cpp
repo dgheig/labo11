@@ -11,15 +11,12 @@ enum Directions {
 };
 
 SearcherList runSimulation(const Map& map, size_t startX, size_t startY, int nbSimulation) {
-   SearcherList searcherList(nbSimulation);
-   Searcher searcher;
-   
-   for (int i = 0; i < nbSimulation; ++i) {
-      searcher = initSearcher();
+   SearcherList searcherList(nbSimulation, initSearcher());
+
+   for (auto& searcher: searcherList) {
       runSearcher(map, startX, startY, searcher);
-      searcherList[i] = searcher;
    }
-   
+
    return searcherList;
 }
 
@@ -28,30 +25,21 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
    size_t currentY = startY;
 
    int maxSteps = (int)(getHeight(map) * getWidth(map));
-
-   for (int steps = 0; steps <= maxSteps; ++steps) {
-      if (getStatus(searcher) != UNDEFINED) {
-         setSteps(searcher, steps);
-         break;
-      }
-      if (steps == maxSteps) {
-         setSteps(searcher, steps);
-         setStatus(searcher, EXHAUSTED);
-         break;
-      }
+   int steps = 0;
+   for (; steps < maxSteps and getStatus(searcher) == UNDEFINED; ++steps) {
 
       switch ((Directions)getRandomInRange(3)) {
          case NORTH:
-            currentY++;
+            ++currentY;
             break;
          case EAST:
-            currentX++;
+            ++currentX;
             break;
          case SOUTH:
-            currentY--;
+            --currentY;
             break;
          case WEST:
-            currentX--;
+            --currentX;
             break;
       }
 
@@ -67,6 +55,12 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             break;
       }
    }
+
+   if (steps == maxSteps) {
+      setStatus(searcher, EXHAUSTED);
+   }
+
+   setSteps(searcher, steps);
 }
 
 bool IsRich(Searcher searcher) {

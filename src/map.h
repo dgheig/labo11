@@ -29,6 +29,7 @@ void addRandomTreasure(Map& map);
 
 bool addLake(Map& map, size_t originX, size_t originY, size_t radius);
 void addRandomLake(Map& map);
+void addRandomLake(Map& map, size_t maxRadius);
 
 bool addStart(Map& map, size_t x, size_t y);
 void addRandomStart(Map& map);
