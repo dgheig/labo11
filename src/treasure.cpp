@@ -82,13 +82,8 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
    setSteps(searcher, steps);
 }
 
-bool IsRich(const Searcher& searcher) {
-   return (getStatus(searcher) == RICH);
-}
-
 bool getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
    if (list.empty()) return false;
-   probability = (double)std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
 
    int sum = 0, counter = 0;
    for (const Searcher& searcher : list) {
@@ -97,6 +92,11 @@ bool getStatistics(const SearcherList& list, double& probability, double& avgSte
          ++counter;
       }
    }
-   avgSteps = (double)sum / (double)counter;
+   probability = counter / (double)list.size();
+   if(counter > 0)
+      avgSteps = (double)sum / (double)counter;
+   else
+      avgSteps = 0;
+
    return true;
 }

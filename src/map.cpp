@@ -22,7 +22,6 @@ bool _checkIfLakeCanBeAdd(Map& map, size_t originX, size_t originY, size_t radiu
         size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
 
         for (size_t width = minWidth; width <= maxWidth; ++width) {
-            // cerr << height << '-' << width << endl;
             if (getMapValue(map, height, width) != MS_EARTH) return false;
         }
     }
@@ -65,6 +64,7 @@ MapState getMapValue(const Map& map, size_t x, size_t y) {
       return MS_OUT;
    return map[y][x];
 }
+
 bool setMapValue(Map& map, size_t x, size_t y, MapState value) {
    if (y >= getHeight(map) or x >= getWidth(map))
       return false;
