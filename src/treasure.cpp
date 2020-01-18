@@ -88,7 +88,7 @@ bool IsRich(const Searcher& searcher) {
 
 bool getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
    if (list.empty()) return false;
-   probability = (double) std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
+   probability = (double)std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
 
    int sum = 0, counter = 0;
    for (const Searcher& searcher : list) {
