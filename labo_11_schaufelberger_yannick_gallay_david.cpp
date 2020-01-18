@@ -25,6 +25,7 @@ int main() {
     size_t startX, startY;
     Map world = initWorld(50, 50, startX, startY);
     displayWorld(world);
+    std::cout << std::endl;
     SearcherList list = runSimulation(world, startX, startY, 3);
     // displaySearcherList(list);
     // double probability = 0, avgSteps = 0.0;

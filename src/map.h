@@ -12,6 +12,8 @@ enum MapState {
     MS_START
 };
 
+const int NUMBER_OF_LAKE = 3;
+
 typedef std::vector<MapState> Axe;
 typedef std::vector<Axe> Map;
 

@@ -6,7 +6,6 @@
 
 #ifdef DEBUG
    #include <iostream>
-   using namespace std;
 #endif
 
 enum Directions {
@@ -73,7 +72,7 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
 
    #ifdef DEBUG
       displayWorld(displayMap);
-      cout << endl;
+      std::cout << std::endl;
    #endif
 
    if (steps == maxSteps) {

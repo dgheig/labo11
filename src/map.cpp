@@ -102,7 +102,7 @@ bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
 }
 
 void addRandomLake(Map& map) {
-    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / 3;
+    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / NUMBER_OF_LAKE;
     addRandomLake(map, maxRadius);
 }
 
@@ -150,7 +150,6 @@ void addRandomStart(Map& map, size_t& x, size_t& y) {
 }
 
 Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
-   const int NUMBER_OF_LAKE = 3;
 
    Map map = getEmptyMap(heigth, width);
 
