@@ -23,6 +23,7 @@ size_t getWidth(const Map& map);
 Map getEmptyMap(size_t height, size_t width);
 
 MapState getMapValue(const Map& map, size_t x, size_t y);
+bool setMapValue(Map& map, size_t x, size_t y, MapState value);
 
 bool addTreasure(Map& map, size_t height, size_t width);
 void addRandomTreasure(Map& map);
