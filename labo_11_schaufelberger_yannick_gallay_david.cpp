@@ -25,11 +25,12 @@ int main() {
     size_t startX, startY;
     Map world = initWorld(50, 50, startX, startY);
     displayWorld(world);
-    SearcherList list = runSimulation(world, startX, startY, 500);
-    displayList(list);
-    double probability = 0, avgSteps = 0.0;
-    getStatistics(list, probability, avgSteps);
-    cout << "probability : " << probability << "\tavgSteps : " << avgSteps << endl;
+    std::cout << std::endl;
+    SearcherList list = runSimulation(world, startX, startY, 3);
+    // displaySearcherList(list);
+    // double probability = 0, avgSteps = 0.0;
+    // getStatistics(list, probability, avgSteps);
+    // cout << "probability : " << probability << "\tavgSteps : " << avgSteps << endl;
 
     WAIT_ENTER;
     return EXIT_SUCCESS;

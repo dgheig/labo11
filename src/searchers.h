@@ -4,6 +4,7 @@
 #include "map.h"
 #include <cstdlib> //size_t
 #include <vector>
+#include <string>
 
 enum ResearcherStatus {
    UNDEFINED,
@@ -20,10 +21,11 @@ Searcher initSearcher(int stepsValue = 0, ResearcherStatus statusValue = UNDEFIN
 
 int getSteps(const Searcher& searcher);
 int getStatus(const Searcher& searcher);
+std::string getStatusString(const Searcher& searcher);
 
 bool setSteps(Searcher& searcher, int value);
 bool setStatus(Searcher& searcher, ResearcherStatus value);
 
-bool displayList(const SearcherList& list);
+bool displaySearcherList(SearcherList& list);
 
 #endif //SEARCHERS_H

@@ -1,7 +1,12 @@
 #include "treasure.h"
 #include "map.h"
 #include "searchers.h"
+#include "utilities.h"
 #include <algorithm>
+
+#ifdef DEBUG
+   #include <iostream>
+#endif
 
 enum Directions {
    NORTH,
@@ -11,15 +16,12 @@ enum Directions {
 };
 
 SearcherList runSimulation(const Map& map, size_t startX, size_t startY, int nbSimulation) {
-   SearcherList searcherList(nbSimulation);
-   Searcher searcher;
-   
-   for (int i = 0; i < nbSimulation; ++i) {
-      searcher = initSearcher();
+   SearcherList searcherList(nbSimulation, initSearcher());
+
+   for (auto& searcher: searcherList) {
       runSearcher(map, startX, startY, searcher);
-      searcherList[i] = searcher;
    }
-   
+
    return searcherList;
 }
 
@@ -28,30 +30,25 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
    size_t currentY = startY;
 
    int maxSteps = (int)(getHeight(map) * getWidth(map));
+   int steps = 0;
 
-   for (int steps = 0; steps <= maxSteps; ++steps) {
-      if (getStatus(searcher) != UNDEFINED) {
-         setSteps(searcher, steps);
-         break;
-      }
-      if (steps == maxSteps) {
-         setSteps(searcher, steps);
-         setStatus(searcher, EXHAUSTED);
-         break;
-      }
+   #ifdef DEBUG
+      Map displayMap = map;
+   #endif
+   for (; steps < maxSteps and getStatus(searcher) == UNDEFINED; ++steps) {
 
       switch ((Directions)getRandomInRange(3)) {
          case NORTH:
-            currentY++;
+            ++currentY;
             break;
          case EAST:
-            currentX++;
+            ++currentX;
             break;
          case SOUTH:
-            currentY--;
+            --currentY;
             break;
          case WEST:
-            currentX--;
+            --currentX;
             break;
       }
 
@@ -66,14 +63,31 @@ void runSearcher(const Map& map, size_t startX, size_t startY, Searcher& searche
             setStatus(searcher, RICH);
             break;
       }
+
+      #ifdef DEBUG
+         if(getStatus(searcher) != LOST and getMapValue(map, currentX, currentY) != MS_START)
+            setMapValue(displayMap, currentX, currentY, MS_TREASURE);
+      #endif
    }
+
+   #ifdef DEBUG
+      displayWorld(displayMap);
+      std::cout << std::endl;
+   #endif
+
+   if (steps == maxSteps) {
+      setStatus(searcher, EXHAUSTED);
+   }
+
+   setSteps(searcher, steps);
 }
 
 bool IsRich(const Searcher& searcher) {
    return (getStatus(searcher) == RICH);
 }
 
-void getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
+bool getStatistics(const SearcherList& list, double& probability, double& avgSteps) {
+   if (list.empty()) return false;
    probability = (double) std::count_if(list.begin(), list.end(), IsRich) / (double)list.size();
 
    int sum = 0, counter = 0;
@@ -84,4 +98,5 @@ void getStatistics(const SearcherList& list, double& probability, double& avgSte
       }
    }
    avgSteps = (double)sum / (double)counter;
+   return true;
 }
