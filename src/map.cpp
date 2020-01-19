@@ -18,8 +18,12 @@ bool _checkIfLakeCanBeAdd(Map& map, size_t originX, size_t originY, size_t radiu
 
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
-        size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
-        size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
+        size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0
+                         ? ((int)originX - (int)lineHalfWidth)
+                         : 0;
+        size_t maxWidth = (originX + lineHalfWidth) > mapWidth
+                         ? mapWidth
+                         : (originX + lineHalfWidth);
 
         for (size_t width = minWidth; width <= maxWidth; ++width) {
             if (getMapValue(map, height, width) != MS_EARTH) return false;
@@ -37,8 +41,12 @@ void _addLake(Map& map, size_t originX, size_t originY, size_t radius) {
 
     for (size_t height = minHeight; height <= maxHeight; ++height) {
         size_t lineHalfWidth = radius - abs((int)originY - (int)height);
-        size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0 ? ((int)originX - (int)lineHalfWidth) : 0;
-        size_t maxWidth = (originX + lineHalfWidth) > mapWidth ? mapWidth : (originX + lineHalfWidth);
+        size_t minWidth = ((int)originX - (int)lineHalfWidth) > 0
+                         ? ((int)originX - (int)lineHalfWidth)
+                         : 0;
+        size_t maxWidth = (originX + lineHalfWidth) > mapWidth
+                         ? mapWidth
+                         : (originX + lineHalfWidth);
 
         for (size_t width = minWidth; width <= maxWidth; ++width) {
             setMapValue(map, height, width, MS_WATER);
@@ -100,7 +108,8 @@ bool addLake(Map& map, size_t originX, size_t originY, size_t radius) {
 }
 
 void addRandomLake(Map& map) {
-    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map)) / NUMBER_OF_LAKE;
+    int maxRadius = (getHeight(map) > getWidth(map) ? getWidth(map) : getHeight(map))
+                    / NUMBER_OF_LAKE;
     addRandomLake(map, maxRadius);
 }
 
