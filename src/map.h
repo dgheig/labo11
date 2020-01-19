@@ -5,7 +5,8 @@ File        : map.h
 Author(s)   : Yannick Schaufelberger et David Gallay
 Date        : 18.01.2020
 
-Goal        : 
+Goal        : Library defining the Map and functions to modify, get values or
+ * display one
 Remark(s)   :
 
                 There is the github repository:
