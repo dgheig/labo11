@@ -1,19 +1,19 @@
 /*
 -----------------------------------------------------------------------------------
-Laboratoire : labo_11
-Fichier     : labo_11_schaufelberger_yannick_gallay_david.cpp
-Auteur(s)   : Yannick Schaufelberger et David Gallay
+Laboratory  : labo_11
+File        : labo_11_schaufelberger_yannick_gallay_david.cpp
+Author(s)   : Yannick Schaufelberger and David Gallay
 Date        : 18.01.2020
 
-But         : Run one or more simulation of treasure hunt.
+Goal        : Run one or more simulation of treasure hunt.
               The searchers progress randomly through a map.
               Statistics about the simulation are displayed at the end.
-Remarque(s) :
+Remark(s)   :
 
                 There is the github repository:
                 https://github.com/dgheig/labo11
 
-Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+Compilator  : MinGW-g++ 6.3.0 and g++ 7.4.0
 -----------------------------------------------------------------------------------*/
 #include <iostream>
 #include <cstdlib>

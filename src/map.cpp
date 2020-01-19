@@ -144,15 +144,15 @@ void addRandomStart(Map& map, size_t& x, size_t& y) {
     } while (!addStart(map, x, y));
 }
 
-Map initWorld(size_t heigth, size_t width, size_t& x, size_t& y) {
+Map initWorld(size_t height, size_t width, size_t& startX, size_t& startY) {
 
-   Map map = getEmptyMap(heigth, width);
+   Map map = getEmptyMap(height, width);
 
    for (int i = 0; i < NUMBER_OF_LAKE; ++i) {
       addRandomLake(map);
    }
    addRandomTreasure(map);
-   addRandomStart(map, x, y);
+   addRandomStart(map, startX, startY);
 
    return map;
 }

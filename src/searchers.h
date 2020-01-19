@@ -1,17 +1,18 @@
 /*
 -----------------------------------------------------------------------------------
-Laboratoire : labo_11
-Fichier     : searchers.h
-Auteur(s)   : Yannick Schaufelberger et David Gallay
+Laboratory  : labo_11
+File        : searchers.h
+Author(s)   : Yannick Schaufelberger et David Gallay
 Date        : 18.01.2020
 
-But         :
-Remarque(s) :
+Goal        : Library defining the Searchers and functions to modify, get values or
+              display a SearchersList
+Remark(s)   :
 
                 There is the github repository:
                 https://github.com/dgheig/labo11
 
-Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+Compilator  : MinGW-g++ 6.3.0 and g++ 7.4.0
 -----------------------------------------------------------------------------------*/
 
 #ifndef SEARCHERS_H
@@ -34,10 +35,9 @@ typedef std::vector<int> Searcher;
 typedef std::vector<Searcher> SearcherList;
 
 /**
- * @brief initialize a searcher with given values
  * @param stepsValue
  * @param statusValue
- * @return
+ * @return a searcher initialized with the given values
  */
 Searcher initSearcher(int stepsValue = 0, ResearcherStatus statusValue = UNDEFINED);
 
@@ -68,14 +68,14 @@ bool setSteps(Searcher& searcher, int value);
  * @brief sets the status of a searcher to the given value
  * @param searcher
  * @param value
- * @return true if success
+ * @return true if success, false if not
  */
 bool setStatus(Searcher& searcher, ResearcherStatus value);
 
 /**
  * @brief displays the information of every searcher in the list
  * @param list
- * @return true if success
+ * @return true if success, false if not
  */
 bool displaySearcherList(SearcherList& list);
 

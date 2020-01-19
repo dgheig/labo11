@@ -32,7 +32,7 @@ bool askForRestart() {
 int askForNumberOfSimulation() {
    int simulationNumber;
    do {
-      cout << "How many simulation do you want? (must be positiv): ";
+      cout << "How many simulation do you want? (must be positive): ";
       cin >> simulationNumber;
       cout << endl;
 
