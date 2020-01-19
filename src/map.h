@@ -6,7 +6,7 @@ Author(s)   : Yannick Schaufelberger et David Gallay
 Date        : 18.01.2020
 
 Goal        : Library defining the Map and functions to modify, get values or
- * display one
+              display one
 Remark(s)   :
 
                 There is the github repository:
@@ -93,7 +93,7 @@ void addRandomTreasure(Map& map);
  */
 bool addLake(Map& map, size_t originX, size_t originY, size_t radius);
 /**
- * @brief calls addRandomLake with the same map and a radius set to the third 
+ * @brief calls addRandomLake with the same map and a radius set to the third
  * of the smallest size
  * @param map
  */

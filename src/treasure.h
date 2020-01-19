@@ -6,7 +6,7 @@ Author(s)   : Yannick Schaufelberger et David Gallay
 Date        : 18.01.2020
 
 Goal        : Library containing the commands to run a simulation on a given map
- a            
+
 Remark(s)   :
 
                 There is the github repository:
